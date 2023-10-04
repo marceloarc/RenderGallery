@@ -14,16 +14,16 @@
 
         [Column(TypeName = "text")]
         public string msg_content { get; set; }
-
-        public int? conversation_id { get; set; }
         public int? user_id { get; set; }
+        public User User { get; set; }
 
         [Column(TypeName = "datetime")]
-        public DateTime? time { get; set; }
+        public DateTime? dataHora { get; set; }
         public int? visu_status { get; set; }
-        [ForeignKey("conversation_id")]
-        public virtual Chat Chat{ get; set; }
+        [ForeignKey("chat_id")]
 
+        public int? chat_id { get; set; }
+        public virtual Chat Chat { get; set; }
 
     }
 }

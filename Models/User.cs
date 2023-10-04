@@ -6,8 +6,6 @@ namespace RenderGallery.Models
     {
         [Key]
         public int Id { get; set; }
-
-
         [Required]
         [StringLength(150)]
         public string Name { get; set; }
@@ -20,6 +18,10 @@ namespace RenderGallery.Models
         [StringLength(250)]
         public string Password { get; set; }
 
+        [StringLength(250)]
+        [Required]
+        public string Telefone { get; set; }
+        public enum TipoUsuario { Administrador = 0, Cliente = 1, Artista = 2 }
         [StringLength(250)]
         public string Pic { get; set; }
     }
