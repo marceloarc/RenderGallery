@@ -11,11 +11,7 @@ namespace RenderGallery.Models
     {
         [Key]
         public int chat_id { get; set; }
-
-
         public int? user_one { get; set; }
-
-
         public int? user_two { get; set; }
 
         [Column(TypeName = "datetime")]
@@ -27,7 +23,6 @@ namespace RenderGallery.Models
 
         [ForeignKey("user_two")]
         public virtual User User2 { get; set; }
-
         public List<Message>? Messages { get; set; }
 
     }

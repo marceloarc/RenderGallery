@@ -1,11 +1,22 @@
 using Microsoft.EntityFrameworkCore;
 using RenderGallery.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+//Autenticação feita aqui -->
+builder.Services.AddAuthentication(
+    CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(option => {
+        option.LoginPath = "/Acess/Login";
+        option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+    });
+
 
 builder.Services.AddDbContext<DatabaseContext>(o=>o.UseSqlServer(builder.Configuration.
     GetConnectionString("DefaultConnection")));
@@ -21,6 +32,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 
 app.MapControllerRoute(

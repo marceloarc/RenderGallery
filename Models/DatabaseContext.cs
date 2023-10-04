@@ -3,7 +3,6 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using Microsoft.Extensions.Options;
-using System.Data.Entity;
 
 namespace RenderGallery.Models
 {
