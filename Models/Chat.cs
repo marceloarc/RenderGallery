@@ -10,7 +10,7 @@ namespace RenderGallery.Models
     public class Chat
     {
         [Key]
-        public int conversation_id { get; set; }
+        public int chat_id { get; set; }
 
 
         public int? user_one { get; set; }
