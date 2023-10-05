@@ -21,6 +21,10 @@ namespace RenderGallery.Models
         [StringLength(250)]
         [Required]
         public string Telefone { get; set; }
+
+        [EnumDataType(typeof(TipoUsuario))]
+        [Required]
+        public TipoUsuario Usuario { get; set; }
         public enum TipoUsuario { Administrador = 0, Cliente = 1, Artista = 2 }
         [StringLength(250)]
         public string Pic { get; set; }
