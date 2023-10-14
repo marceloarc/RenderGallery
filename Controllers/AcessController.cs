@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace RenderGallery.Controllers
 {
+    [Route("login")]
+    [ApiController]
     public class AcessController : Controller
     {
 
@@ -55,19 +57,16 @@ namespace RenderGallery.Controllers
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, 
                 new ClaimsPrincipal(claimsIdentity), properties);
 
+            var acess = 3;
 
             if (usuario.Usuario == Models.User.TipoUsuario.Administrador)
-            {
-                // O usuário é um administrador
-            }
-            else if (usuario.Usuario == Models.User.TipoUsuario.Cliente || usuario.Usuario == Models.User.TipoUsuario.Artista)
-            {
-                // O usuário é um cliente ou um artista
-                return RedirectToAction("Bar", "Home");
-            }
-
-            ViewData["ValidateMessage"] = "user not found";
-            return View();
+                acess = (int)Models.User.TipoUsuario.Administrador;
+            else if (usuario.Usuario == Models.User.TipoUsuario.Cliente)
+                acess = (int)Models.User.TipoUsuario.Cliente;
+            else if (usuario.Usuario == Models.User.TipoUsuario.Artista)
+                acess = (int)Models.User.TipoUsuario.Artista;
+            
+            return Json(new { access = acess });
 
         }
 
