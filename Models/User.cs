@@ -1,7 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace RenderGallery.Models
 {
+    [JsonObject(IsReference = true)]
     public class User
     {
         [Key]

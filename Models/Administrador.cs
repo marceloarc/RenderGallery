@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RenderGallery.Models
 {
@@ -9,6 +10,8 @@ namespace RenderGallery.Models
         [Required]
         public DateTime dataHora { get; set; }
         public int User_Id { get; set; }
+
+        [ForeignKey("User_Id")]
         public virtual User User { get; set; }
     }
 }

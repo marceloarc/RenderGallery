@@ -18,7 +18,7 @@ namespace RenderGallery.Models
         public string Hash { get; set;}
         [Required]
         public DateTime dataHora { get; set; }
-        public List<Tags>? Tags { get; set; }
+        public virtual List<Tags>? Tags { get; set; }
 
     }
 }

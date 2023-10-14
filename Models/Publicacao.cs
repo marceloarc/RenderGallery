@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RenderGallery.Models
 {
@@ -15,7 +16,9 @@ namespace RenderGallery.Models
         public int deslike { get; set; }
         public DateTime dataHora { get; set; }
         public int Artista_Id { get; set; }
+
+        [ForeignKey("Artista_Id")]
         public virtual Artista Artista { get; set; }
-        public List<Art>? Artes { get; set; }
+        public virtual List<Art>? Artes { get; set; }
     }
 }

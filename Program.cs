@@ -18,7 +18,7 @@ builder.Services.AddAuthentication(
     });
 
 
-builder.Services.AddDbContext<DatabaseContext>(o=>o.UseSqlServer(builder.Configuration.
+builder.Services.AddDbContext<DatabaseContext>(o=>o.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.
     GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
@@ -39,7 +39,9 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}"
+    
+    );
 
 app.MapFallbackToFile("index.html"); ;
 

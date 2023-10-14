@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 namespace RenderGallery.Models
 {
     public class Cliente
@@ -13,9 +13,13 @@ namespace RenderGallery.Models
         public DateTime dataHora { get; set; }
 
         public int User_Id { get; set; }
+
+        [ForeignKey("User_Id")]
         public virtual User User { get; set; }
         public int Favoritos_Id { get; set; }
+
+        [ForeignKey("Favoritos_Id")]
         public virtual Favoritos Favoritos { get; set; }
-        public List<Tags>? Tags { get; set; }
+        public virtual List<Tags>? Tags { get; set; }
     }
 }

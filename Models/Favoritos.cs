@@ -7,7 +7,7 @@ namespace RenderGallery.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public List<Publicacao>? Publicacaos { get; set; }
+        public virtual List<Publicacao>? Publicacaos { get; set; }
 
     }
 }

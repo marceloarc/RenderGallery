@@ -23,7 +23,7 @@ namespace RenderGallery.Models
 
         [ForeignKey("user_two")]
         public virtual User User2 { get; set; }
-        public List<Message>? Messages { get; set; }
+        public virtual List<Message>? Messages { get; set; }
 
     }
 }
