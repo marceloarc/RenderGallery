@@ -13,7 +13,7 @@ namespace RenderGallery.Models
         public enum categorias { digital = 0, fisico = 1 }
         [EnumDataType(typeof(tipo))]
         [Required]
-        public categorias tipoProduct { get; set; }
+        public tipo tipoProduct { get; set; }
         public enum tipo { unico = 0, direito = 1 }
     }
 }

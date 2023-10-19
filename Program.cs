@@ -17,6 +17,24 @@ builder.Services.AddAuthentication(
         option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
     });
 
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdministradorOnly", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireClaim("usuario", "Administrador");
+    });
+});
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("ArtistaOnly", policy =>
+    {
+        policy.RequireAuthenticatedUser();
+        policy.RequireClaim("usuario", "Artista");
+    });
+});
+
 
 builder.Services.AddDbContext<DatabaseContext>(o=>o.UseLazyLoadingProxies().UseSqlServer(builder.Configuration.
     GetConnectionString("DefaultConnection")));

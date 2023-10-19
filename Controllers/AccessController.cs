@@ -50,25 +50,51 @@ namespace RenderGallery.Controllers
                 await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,
                     new ClaimsPrincipal(claimsIdentity), properties);
 
-                var access = 3;
+                var userData = new
+                {
+                    access = 3,
+                    role = "Visitante",
+                    user_id = 0,
+                    email = "",
+                };
 
                 if (usuario.Usuario == Models.User.TipoUsuario.Administrador)
-                    access = (int)Models.User.TipoUsuario.Administrador;
+                {
+                    userData = new
+                    {
+                        access = (int)Models.User.TipoUsuario.Administrador,
+                        role = "Administrador",
+                        user_id = usuario.Id,
+                        email = usuario.Email,
+                    };
+                }
                 else if (usuario.Usuario == Models.User.TipoUsuario.Cliente)
-                    access = (int)Models.User.TipoUsuario.Cliente;
+                {
+                    userData = new
+                    {
+                        access = (int)Models.User.TipoUsuario.Cliente,
+                        role = "Cliente",
+                        user_id = usuario.Id,
+                        email = usuario.Email,
+                    };
+                }
                 else if (usuario.Usuario == Models.User.TipoUsuario.Artista)
-                    access = (int)Models.User.TipoUsuario.Artista;
-
-                return Json(new { access = access });
+                {
+                    userData = new
+                    {
+                        access = (int)Models.User.TipoUsuario.Artista,
+                        role = "Artista",
+                        user_id = usuario.Id,
+                        email = usuario.Email,
+                    };
+                }
+                return Json(userData);
             }
             else
             {
                 TempData["erro"] = "Usuário ou senha inválidos";
                 return Json(TempData);
             }
-
-      
-
         }
 
         public async Task<IActionResult> Logoff()
