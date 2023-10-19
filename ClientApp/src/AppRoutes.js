@@ -1,6 +1,7 @@
 import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
 import Login from "./components/FetchLogin";
+import RegistrationForm from "./components/FetchResgistro";
 import { Home } from "./components/Home";
 
 const AppRoutes = [
@@ -19,7 +20,11 @@ const AppRoutes = [
   {
     path: '/fetch-login',
     element: <Login />
-  }
+},
+{
+    path: '/fetch-registro',
+    element: <RegistrationForm />
+}
 ];
 
 export default AppRoutes;
