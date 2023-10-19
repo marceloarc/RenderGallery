@@ -76,7 +76,7 @@ namespace RenderGallery.Controllers
                 {
                     string hash = BCrypt.Net.BCrypt.HashPassword(cliente.User.Password);
                     cliente.User.Password = hash;
-                    cliente.User.Usuario = Models.User.TipoUsuario.Artista;
+                    cliente.User.Usuario = Models.User.TipoUsuario.Cliente;
                     cliente.dataHora = DateTime.Now;
                     db.Clientes.Add(cliente);
                     db.SaveChanges();

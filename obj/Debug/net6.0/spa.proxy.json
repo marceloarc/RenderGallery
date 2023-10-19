@@ -1,0 +1,8 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:44400",
+"LaunchCommand": "npm start",
+"WorkingDirectory": "C:\\Users\\Administrator\\source\\repos\\RenderGallery-dev\\ClientApp\\",
+"MaxTimeoutInSeconds": "120"
+}
+}
