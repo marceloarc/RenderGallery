@@ -1,7 +1,7 @@
 import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
 import Login from "./components/FetchLogin";
-import RegistrationForm from "./components/FetchResgistro";
+import Registro from "./components/FetchResgistro";
 import { Home } from "./components/Home";
 
 const AppRoutes = [
@@ -23,7 +23,7 @@ const AppRoutes = [
 },
 {
     path: '/fetch-registro',
-    element: <RegistrationForm />
+    element: <Registro/>
 }
 ];
 

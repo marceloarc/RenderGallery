@@ -1,7 +1,7 @@
 ﻿import React, { Component } from 'react';
 import axios from 'axios';
 
-class RegistrationForm extends Component {
+class Registro extends Component {
     state = {
         email: '',
         password: '',
@@ -88,4 +88,4 @@ class RegistrationForm extends Component {
     }
 }
 
-export default RegistrationForm;
+export default Registro;

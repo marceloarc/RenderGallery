@@ -6,7 +6,7 @@ using System.Data.Entity;
 namespace RenderGallery.Controllers
 {
     [ApiController]
-    [Route("user")]
+    [Route("api/[controller]")]
     public class UserController : Controller
     {
         private readonly DatabaseContext db;
@@ -17,6 +17,7 @@ namespace RenderGallery.Controllers
             this.db = db;
         }
 
+        [HttpGet]
         public List<Artista> Get()
         {
             List<Artista> customers = new List<Artista>();
