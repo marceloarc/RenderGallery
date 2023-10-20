@@ -6,7 +6,7 @@ using System.Data.Entity;
 namespace RenderGallery.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("user")]
     public class UserController : Controller
     {
         private readonly DatabaseContext db;

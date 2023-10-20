@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\source\\repos\\RenderGallery-dev\\RenderGallery.csproj": {}
+    "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\RenderGallery\\RenderGallery.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\source\\repos\\RenderGallery-dev\\RenderGallery.csproj": {
+    "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\RenderGallery\\RenderGallery.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\RenderGallery-dev\\RenderGallery.csproj",
+        "projectUniqueName": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\RenderGallery\\RenderGallery.csproj",
         "projectName": "RenderGallery",
-        "projectPath": "C:\\Users\\Administrator\\source\\repos\\RenderGallery-dev\\RenderGallery.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\source\\repos\\RenderGallery-dev\\obj\\",
+        "projectPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\RenderGallery\\RenderGallery.csproj",
+        "packagesPath": "C:\\Users\\pedro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\pedro\\OneDrive\\Documentos\\GitHub\\RenderGallery\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\VS SHARED\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\pedro\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -102,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

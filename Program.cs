@@ -16,7 +16,7 @@ builder.Services.AddAuthentication(
         option.LoginPath = "/Acess/Login";
         option.ExpireTimeSpan = TimeSpan.FromMinutes(20);
     });
-
+builder.Services.AddCors();
 builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdministradorOnly", policy =>
@@ -49,7 +49,7 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
+app.UseCors(opcoes => opcoes.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();

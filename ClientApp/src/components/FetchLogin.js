@@ -23,7 +23,7 @@ class Login extends Component {
         const { email, password, keepLoggedIn } = this.state;
 
         try {
-            const response = await axios.post('login', {
+            const response = await axios.post(process.env.REACT_APP_API + '/login', {
                 email,
                 password,
                 keepLoggedIn,
@@ -44,13 +44,14 @@ class Login extends Component {
                             // Redirecionar para uma página de erro, pois o tipo de usuário é desconhecido
                             break;
                     }
+                    console.log(response);
                 })
                 .catch(error => {
                     console.error(error);
                 });
 
             // Você pode redirecionar ou executar ações apropriadas com base na resposta do servidor.
-            console.log(response);
+            
         } catch (error) {
             console.error(error);
         }

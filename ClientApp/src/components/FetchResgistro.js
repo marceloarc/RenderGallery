@@ -1,6 +1,7 @@
 ﻿import React, { Component } from 'react';
 import axios from 'axios';
 
+
 class Registro extends Component {
     state = {
         email: '',
@@ -16,14 +17,18 @@ class Registro extends Component {
 
     handleRegister = async () => {
         const { email, password, name, userType } = this.state;
-        const data = { email, password, name };
+        var data = { email, password, name };
 
         try {
             let response;
             if (userType === 'artista') {
-                response = await axios.post('/user/registerArtista', data);
+                data = { "user": { "name": "teste", "email": "teste@teste18.com", "password": "teste", "pic": "teste", "telefone": "43434" } };
+
+                response = await axios.post(process.env.REACT_APP_API+'/user/RegisterArtista', data);
             } else {
-                response = await axios.post('/user/registerCliente', data);
+                data = { "document": "43802329805", "user": { "name": "teste", "email": "teste@teste18.com", "password": "teste", "pic": "teste", "telefone": "43434" } };
+
+                response = await axios.post('/user/RegisterCliente', data);
             }
 
             const result = response.data;

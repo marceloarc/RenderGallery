@@ -46,7 +46,7 @@ namespace RenderGallery.Controllers
                 {
                     Cart cart = new Cart();
 
-                    cart.User_id = produto.User_id;
+                    cart.User_id = (int)produto.User_id;
                     cart.Produtos.Add(produto);
                     db.Carts.Add(cart);
                     db.SaveChanges();
