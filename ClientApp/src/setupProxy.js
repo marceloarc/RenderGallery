@@ -7,6 +7,7 @@ const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:7069` :
 const context =  [
     "/Access",
     "/User",
+    "/UserTest",
 ];
 
 module.exports = function(app) {

@@ -16,19 +16,20 @@ class Registro extends Component {
     };
 
     handleRegister = async () => {
-        const { email, password, name, userType } = this.state;
-        var data = { email, password, name };
-
+        const { email, password, name, userType, document } = this.state;
+        var data = {};
         try {
             let response;
             if (userType === 'artista') {
-                data = { "user": { "name": "teste", "email": "teste@teste18.com", "password": "teste", "pic": "teste", "telefone": "43434" } };
+               // data = { "user": { "name": "teste", "email": "teste@teste18.com", "password": "teste", "pic": "teste", "telefone": "43434" } };
+                data = { "user": { email, password, name, "pic": "0", "telefone": "0" } };
 
-                response = await axios.post(process.env.REACT_APP_API+'/user/RegisterArtista', data);
+                response = await axios.post(process.env.REACT_APP_API + '/user/RegisterArtista', data);
             } else {
-                data = { "document": "43802329805", "user": { "name": "teste", "email": "teste@teste18.com", "password": "teste", "pic": "teste", "telefone": "43434" } };
+               // data = { "document": "43802329805", "user": { "name": "teste", "email": "teste@teste18.com", "password": "teste", "pic": "teste", "telefone": "43434" } };
+                data = { "document": document, "user": { email, password, name, "pic": "0", "telefone": "0" } };
 
-                response = await axios.post('/user/RegisterCliente', data);
+                response = await axios.post(process.env.REACT_APP_API + '/user/RegisterCliente', data);
             }
 
             const result = response.data;
@@ -43,7 +44,7 @@ class Registro extends Component {
     };
 
     render() {
-        const { email, password, name, userType, message } = this.state;
+        const { email, password, name, userType, message, document } = this.state;
 
         return (
             <div>
@@ -85,6 +86,21 @@ class Registro extends Component {
                         <option value="cliente">Cliente</option>
                     </select>
                 </label>
+                <br />
+
+                {/* Renderiza o campo CPF se o userType for "cliente" */}
+                {userType === 'cliente' && (
+                    <label>
+                        CPF:
+                        <input
+                            type="text"
+                            name="cpf"
+                            value={document}
+                            onChange={this.handleChange}
+                        />
+                    </label>
+                )}
+
                 <br />
                 <button onClick={this.handleRegister}>Registrar</button>
                 <p>{message}</p>
