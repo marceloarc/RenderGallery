@@ -10,7 +10,7 @@ namespace RenderGallery.Controllers
 {
     [Route("login")]
     [ApiController]
-    public class AcessController : Controller
+    public class AccessController : Controller
     {
 
         private readonly DatabaseContext db;
