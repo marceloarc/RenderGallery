@@ -20,10 +20,10 @@ namespace RenderGallery.Controllers
         [HttpGet]
         public List<Artista> Get()
         {
-            List<Artista> customers = new List<Artista>();
-            customers = db.Artistas.Include(a => a.User.Name).ToList();
+            List<Artista> artistas = new List<Artista>();
+            artistas = db.Artistas.Include(a => a.User.Name).ToList();
       
-            return customers;
+            return artistas;
         }
 
         [HttpPost("[action]")]
@@ -92,6 +92,63 @@ namespace RenderGallery.Controllers
                 return Ok(TempData);
             }
 
+        }
+        [HttpPost("[action]")]
+        public async Task<IActionResult> EditarCliente(Cliente cli)
+        {
+            if (ModelState.IsValid)
+            {
+                Cliente cliente = db.Clientes.Where(x => x.Id == cli.Id).FirstOrDefault();
+
+                if (cliente != null)
+                {
+                    cliente = cli;
+                    db.SaveChanges();
+                    TempData["sucesso"] = "Cliente Editado!";
+               
+
+                }
+                else
+                {
+                    TempData["erro"] = "Cliente não encontrado!";
+                }
+
+            }
+            else
+            {
+                TempData["erro"] = "Algo deu errado!";
+          
+            }
+            return Ok(TempData);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> EditarArtista(Artista art)
+        {
+            if (ModelState.IsValid)
+            {
+                Artista artista = db.Artistas.Where(x => x.Id == art.Id).FirstOrDefault();
+
+                if (artista != null)
+                {
+                    artista = art;
+                    db.SaveChanges();
+                    TempData["sucesso"] = "Artista Editado!";
+
+
+                }
+                else
+                {
+                    TempData["erro"] = "Artista não encontrado!";
+                }
+
+            }
+            else
+            {
+                TempData["erro"] = "Algo deu errado!";
+
+            }
+            return Ok(TempData);
         }
 
     }
