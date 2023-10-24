@@ -1,9 +1,7 @@
 ﻿import React, { Component } from 'react';
 import axios from 'axios';
-import InputMask from 'react-input-mask';
 import './loginn.css';
-
-
+import InputMask from 'react-input-mask';
 
 class Registro extends Component {
     state = {
@@ -12,10 +10,23 @@ class Registro extends Component {
         name: '',
         userType: 'artista', // Valor padrão para artista
         message: '',
+        document: '',
+        telefone: '',
+        mask: '', // Defina mask no estado inicial
     };
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
+    };
+
+    handleInputChange = (e) => {
+        const { name, value } = e.target;
+
+        // Não defina a máscara automaticamente aqui
+
+        this.setState({
+            [name]: value,
+        });
     };
 
     handleRegister = async () => {
@@ -24,12 +35,10 @@ class Registro extends Component {
         try {
             let response;
             if (userType === 'artista') {
-               // data = { "user": { "name": "teste", "email": "teste@teste18.com", "password": "teste", "pic": "teste", "telefone": "43434" } };
                 data = { "user": { email, password, name, "pic": "0", "telefone": telefone } };
 
                 response = await axios.post(process.env.REACT_APP_API + '/user/RegisterArtista', data);
             } else {
-               // data = { "document": "43802329805", "user": { "name": "teste", "email": "teste@teste18.com", "password": "teste", "pic": "teste", "telefone": "43434" } };
                 data = { "document": document, "user": { email, password, name, "pic": "0", "telefone": telefone } };
 
                 response = await axios.post(process.env.REACT_APP_API + '/user/RegisterCliente', data);
@@ -58,8 +67,8 @@ class Registro extends Component {
                 <div className="form-image">
                     <div className="texto">
                         <h1>Bem Vindo!</h1>
-                        <br/>
-                            <p>Realize o Cadastro para criar sua conta.</p>
+                        <br />
+                        <p>Realize o Cadastro para criar sua conta.</p>
                     </div>
                 </div>
                 <div className="form">
@@ -80,8 +89,7 @@ class Registro extends Component {
                                 value={name}
                                 onChange={this.handleChange}
                                 required
-                            >
-                            </input>
+                            />
                         </div>
 
                         <div className="input-box">
@@ -94,8 +102,7 @@ class Registro extends Component {
                                 value={email}
                                 onChange={this.handleChange}
                                 required
-                            >
-                            </input>
+                            />
                         </div>
 
                         <div className="input-box">
@@ -108,23 +115,20 @@ class Registro extends Component {
                                 value={password}
                                 onChange={this.handleChange}
                                 required
-                            >
-                            </input>
+                            />
                         </div>
 
                         <div className="input-box">
                             <label for="telefone">Telefone</label>
-                            <input
-                                id="telefone"
-                                type="number"
-                                name="telefone"
+                            <InputMask
                                 mask="(99) 99999-9999"
+                                type="text"
+                                name="telefone"
                                 placeholder="(xx) xxxxx-xxxx"
                                 value={telefone}
-                                onChange={this.handleChange}
+                                onChange={this.handleInputChange}
                                 required
-                            >
-                            </input>
+                            />
                         </div>
 
                         <div className="input-box">
@@ -144,26 +148,23 @@ class Registro extends Component {
                         {userType === 'cliente' && (
                             <div className="input-box">
                                 <label for="document">Documento</label>
-                                <input
-                                    id="document"
+                                <InputMask
+                                    mask={document.length >= 11 ? '999.999.999-99' : '99.999.999/9999-99'} // Aplica a máscara com base no comprimento da entrada
                                     type="text"
                                     name="document"
-                                    mask={document.length === 11 ? '999.999.999-99' : '99.999.999/9999-99'}
                                     placeholder="Digite seu documento"
                                     value={document}
-                                    onChange={this.handleChange}
+                                    onChange={this.handleInputChange}
                                     required
-                                >
-                                </input>
+                                />
                             </div>
-                            )}
-                        </div>
-                        <div className="continue-button">
+                        )}
+                    </div>
+                    <div className="continue-button">
                         <button onClick={this.handleRegister}>Registrar</button>
-                        </div>
+                    </div>
                 </div>
             </div>
-
         );
     }
 }
