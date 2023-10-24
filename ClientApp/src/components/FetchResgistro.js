@@ -1,5 +1,6 @@
 ﻿import React, { Component } from 'react';
 import axios from 'axios';
+import InputMask from 'react-input-mask';
 import './loginn.css';
 
 
@@ -117,7 +118,8 @@ class Registro extends Component {
                                 id="telefone"
                                 type="number"
                                 name="telefone"
-                                placeholder="(xx) xxxx-xxxx"
+                                mask="(99) 99999-9999"
+                                placeholder="(xx) xxxxx-xxxx"
                                 value={telefone}
                                 onChange={this.handleChange}
                                 required
@@ -146,6 +148,7 @@ class Registro extends Component {
                                     id="document"
                                     type="text"
                                     name="document"
+                                    mask={document.length === 11 ? '999.999.999-99' : '99.999.999/9999-99'}
                                     placeholder="Digite seu documento"
                                     value={document}
                                     onChange={this.handleChange}
