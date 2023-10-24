@@ -30,6 +30,7 @@ body {
     background-repeat: no-repeat;
 }
 
+
 .right-login {
     background: white;
     width: 50vw;
@@ -37,6 +38,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .card-login {
@@ -47,7 +50,8 @@ body {
     flex-direction: column;
     padding: 30px 35px;
     background: rgb(255, 255, 255);
-    box-shadow: 0px 10px 40px #7c9fc2;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
     .card-login > h1 {
@@ -97,6 +101,8 @@ body {
     background: #212E3D;
     cursor: pointer;
     box-shadow: 0px 10px 40px -12px #2c496b;
+    align-items: center;
+    align-content: center;
 }
 
 /*------------------------/ navbar /-----------------------*/
@@ -105,22 +111,8 @@ body {
     background-color: #212E3D;
     overflow: hidden;
     margin-bottom: 50px;
+    height: 75px;
 }
-
-    /* Estilos para os links na barra de navegação */
-    .navbar a {
-        float: left;
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
-
-        /* Estilos para os links quando o mouse passa por cima */
-        .navbar a:hover {
-            color: black;
-        }
 
     /* Estilos para o logotipo (imagem) na barra de navegação */
     .navbar .logo {
@@ -128,23 +120,39 @@ body {
     }
 
     /* Estilos para os botões na barra de navegação */
-    .navbar .btn {
-        float: right;
-        display: block;
-        background-color: white;
-        color: #212E3D;
+
+.opposite-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto; /* Isso deve alinhar à direita */
+}
+
+    .opposite-buttons .button-left {
         text-align: center;
-        padding: 14px 20px;
-        margin: 8px 16px;
-        border: none;
+        background-color: #212E3D;
+        color: white;
+        border: 2px solid white;
+        padding: 10px 20px;
         border-radius: 50px;
         cursor: pointer;
     }
 
-        /* Estilos para os botões quando o mouse passa por cima */
-        .navbar .btn:hover {
-            background-color: gray;
-        }
+    .opposite-buttons .button-right {
+        text-align: center;
+        background-color: white;
+        color: #212E3D;
+        border: 2px solid #212E3D;
+        padding: 10px 20px;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+logo-nav {
+    background: url('img/render.png');
+    width: 100%;
+    height: 100%;
+}
 
 /*--------------- Registro----------------*/
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap');
@@ -174,7 +182,8 @@ body {
     background: url('img/image.png');
     background-size: 130%;
     background-repeat: no-repeat;
-    border-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 
     .form-image img {
@@ -190,7 +199,8 @@ body {
     align-items: center;
     background-color: #fff;
     padding: 3rem;
-    border-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
 }
 
 .form-header {
@@ -232,6 +242,33 @@ body {
     position: absolute;
     border-radius: 10px;
 }
+
+.input-box input,
+.input-box select { /* Aplicar a largura a ambas as entradas e selects */
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: 0.8rem;
+    width: 100%; /* Defina a largura para 100% para ambos */
+    box-sizing: border-box;
+}
+
+    .input-box select:hover {
+        background-color: #eeeeee75;
+    }
+
+    .input-box select:focus-visible {
+        outline: 1px solid #6c63ff;
+    }
+
+    .input-box select::placeholder {
+        color: #000000be;
+    }
+
+
+
 
 .input-group {
     display: flex;
@@ -295,6 +332,12 @@ body {
         font-weight: 600;
         color: #000000c0;
     }
+
+.continue-button {
+    width: 100%; /* Largura total */
+    align-content: center;
+    align-items: center;
+}
 
 .continue-button button {
     width: 100%;
@@ -382,3 +425,4 @@ body {
     color: white;
     text-align: left;
 }
+
