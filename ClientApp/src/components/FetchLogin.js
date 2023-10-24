@@ -47,42 +47,40 @@ function Login() {
     }
 
     return (
-        <div className="login-container">
-            <h2>Login</h2>
-            <form className="login-form" onSubmit={handleSubmit}>
-                <div>
-                    <label>Email</label>
-                    <br />
+
+        <form className="login-form" onSubmit={handleSubmit}>
+            <div>
+                <label>Email</label>
+                <br />
+                <input
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+            </div>
+            <div>
+                <label>Senha</label>
+                <br />
+                <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+            </div>
+            <div>
+                <label>
+                    Manter-me conectado
                     <input
-                        type="text"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        type="checkbox"
+                        checked={keepLoggedIn}
+                        onChange={() => setKeepLoggedIn(!keepLoggedIn)}
                     />
-                </div>
-                <div>
-                    <label>Senha</label>
-                    <br />
-                    <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label>
-                        Manter-me conectado
-                        <input
-                            type="checkbox"
-                            checked={keepLoggedIn}
-                            onChange={() => setKeepLoggedIn(!keepLoggedIn)}
-                        />
-                    </label>
-                </div>
-                <div>
-                    <button className="login-button" type="submit">Entrar</button>
-                </div>
-            </form>
-        </div>
+                </label>
+            </div>
+            <div>
+                <button className="login-button" type="submit">Entrar</button>
+            </div>
+        </form>
     );
 }
 

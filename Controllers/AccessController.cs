@@ -3,7 +3,6 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using RenderGallery.Models;
-using RenderGallery.Migrations;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace RenderGallery.Controllers
@@ -15,7 +14,7 @@ namespace RenderGallery.Controllers
 
         private readonly DatabaseContext db;
 
-        public AcessController(DatabaseContext rendergalleryContext)
+        public AccessController(DatabaseContext rendergalleryContext)
         {
             db = rendergalleryContext;
         }

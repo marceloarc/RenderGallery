@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RenderGallery.Models;
+using RenderGallery.Util;
 using System;
 using System.Data.Entity;
 
@@ -75,23 +76,41 @@ namespace RenderGallery.Controllers
                 }
                 else
                 {
-                    string hash = BCrypt.Net.BCrypt.HashPassword(cliente.User.Password);
-                    cliente.User.Password = hash;
-                    cliente.User.Usuario = Models.User.TipoUsuario.Cliente;
-                    cliente.dataHora = DateTime.Now;
-                    db.Clientes.Add(cliente);
-                    db.SaveChanges();
-                    TempData["sucesso"] = "Cliente Cadastrado com sucesso!";
-                    return Ok(TempData);
+                    bool isValid = false;
+                    if(cliente.document.Length > 11)
+                    {
+                        isValid = Functions.ValidaCNPJ(cliente.document);
+                    }
+                    else
+                    {
+                        isValid = Functions.ValidaCPF(cliente.document);
+                    }
+
+                    if (isValid)
+                    {
+                        string hash = BCrypt.Net.BCrypt.HashPassword(cliente.User.Password);
+                        cliente.User.Password = hash;
+                        cliente.User.Usuario = Models.User.TipoUsuario.Cliente;
+                        cliente.dataHora = DateTime.Now;
+                        db.Clientes.Add(cliente);
+                        db.SaveChanges();
+                        TempData["success"] = "Cliente Cadastrado com sucesso!";
+                      
+                    }
+                    else
+                    {
+                        TempData["error"] = "Document invalid";
+                    }
+
                 }
 
             }
             else
             {
                 TempData["erro"] = "Algo deu errado!";
-                return Ok(TempData);
+               
             }
-
+            return Ok(TempData);
         }
         [HttpPost("[action]")]
         public async Task<IActionResult> EditarCliente(Cliente cli)

@@ -28,14 +28,14 @@ class Registro extends Component {
             } else {
                // data = { "document": "43802329805", "user": { "name": "teste", "email": "teste@teste18.com", "password": "teste", "pic": "teste", "telefone": "43434" } };
                 data = { "document": document, "user": { email, password, name, "pic": "0", "telefone": "0" } };
-
+                console.log(data);
                 response = await axios.post(process.env.REACT_APP_API + '/user/RegisterCliente', data);
             }
 
             const result = response.data;
-            if (result.sucesso) {
+            if (result.success) {
                 this.setState({ message: result.sucesso });
-            } else if (result.erro) {
+            } else if (result.error) {
                 this.setState({ message: result.erro });
             }
         } catch (error) {
@@ -91,10 +91,10 @@ class Registro extends Component {
                 {/* Renderiza o campo CPF se o userType for "cliente" */}
                 {userType === 'cliente' && (
                     <label>
-                        CPF:
+                        Documento:
                         <input
                             type="text"
-                            name="cpf"
+                            name="document"
                             value={document}
                             onChange={this.handleChange}
                         />

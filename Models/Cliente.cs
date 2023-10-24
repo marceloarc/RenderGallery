@@ -16,10 +16,10 @@ namespace RenderGallery.Models
 
         [ForeignKey("User_Id")]
         public virtual User User { get; set; }
-        public int Favoritos_Id { get; set; }
+        public int? Favoritos_Id { get; set; }
 
         [ForeignKey("Favoritos_Id")]
-        public virtual Favoritos Favoritos { get; set; }
+        public virtual Favoritos? Favoritos { get; set; }
         public virtual List<Tags>? Tags { get; set; }
     }
 }

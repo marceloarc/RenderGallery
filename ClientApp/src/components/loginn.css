@@ -1,0 +1,384 @@
+body {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+    background: #1E1E1E;
+}
+
+.main-login {
+    margin-left: 10%;
+    width: 80%;
+    height: 80%;
+    background: #212E3D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.left-login {
+    width: 80vh;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: url(img/image.png);
+    background-repeat: no-repeat;
+}
+
+.right-login {
+    background: white;
+    width: 50vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-login {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px 35px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 10px 40px #7c9fc2;
+}
+
+    .card-login > h1 {
+        color: rgb(10, 10, 10);
+        font-weight: 800;
+        margin: 0;
+    }
+
+.textfield {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+    .textfield > input {
+        width: 100%;
+        border: none;
+        padding: 15px;
+        background: #d3d3d3;
+        color: white;
+        font-size: 12pt;
+        box-shadow: 0px 10px 40px #e0e0e0;
+        outline: none;
+        box-sizing: border-box;
+    }
+
+    .textfield > label {
+        color: white;
+        margin-bottom: 10px;
+    }
+
+    .textfield > input::placeholder {
+        color: black;
+    }
+
+.btn-login {
+    width: 90%;
+    padding: 16px 0px;
+    margin: 25px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: white;
+    background: #212E3D;
+    cursor: pointer;
+    box-shadow: 0px 10px 40px -12px #2c496b;
+}
+
+/*------------------------/ navbar /-----------------------*/
+/* Estilos para a barra de navegação */
+.navbar {
+    background-color: #212E3D;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+    /* Estilos para os links na barra de navegação */
+    .navbar a {
+        float: left;
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+        /* Estilos para os links quando o mouse passa por cima */
+        .navbar a:hover {
+            color: black;
+        }
+
+    /* Estilos para o logotipo (imagem) na barra de navegação */
+    .navbar .logo {
+        float: left;
+    }
+
+    /* Estilos para os botões na barra de navegação */
+    .navbar .btn {
+        float: right;
+        display: block;
+        background-color: white;
+        color: #212E3D;
+        text-align: center;
+        padding: 14px 20px;
+        margin: 8px 16px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+    }
+
+        /* Estilos para os botões quando o mouse passa por cima */
+        .navbar .btn:hover {
+            background-color: gray;
+        }
+
+/*--------------- Registro----------------*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    margin-left: 10%;
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+}
+
+.form-image {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0rem;
+    background: url('img/image.png');
+    background-size: 130%;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+}
+
+    .form-image img {
+        width: 1000%;
+        height: 80vh;
+    }
+
+.form {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    padding: 3rem;
+    border-radius: 10px;
+}
+
+.form-header {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-button {
+    display: flex;
+    align-items: center;
+}
+
+    .login-button button {
+        border: none;
+        background-color: #212E3D;
+        padding: 0.4rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+        .login-button button:hover {
+            background-color: #34557a;
+        }
+
+        .login-button button a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #fff;
+        }
+
+.form-header h1::after {
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 0.3rem;
+    background-color: #6c63ff;
+    margin: 0 auto;
+    position: absolute;
+    border-radius: 10px;
+}
+
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+}
+
+    .input-box input {
+        margin: 0.6rem 0;
+        padding: 0.8rem 1.2rem;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 1px 1px 6px #0000001c;
+        font-size: 0.8rem;
+    }
+
+        .input-box input:hover {
+            background-color: #eeeeee75;
+        }
+
+        .input-box input:focus-visible {
+            outline: 1px solid #6c63ff;
+        }
+
+    .input-box label,
+    .gender-title h6 {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #000000c0;
+    }
+
+    .input-box input::placeholder {
+        color: #000000be;
+    }
+
+.gender-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.62rem;
+    padding: 0 .5rem;
+}
+
+.gender-input {
+    display: flex;
+    align-items: center;
+}
+
+    .gender-input input {
+        margin-right: 0.35rem;
+    }
+
+    .gender-input label {
+        font-size: 0.81rem;
+        font-weight: 600;
+        color: #000000c0;
+    }
+
+.continue-button button {
+    width: 100%;
+    margin-top: 2.5rem;
+    border: none;
+    background-color: #212E3D;
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    .continue-button button:hover {
+        background-color: #34557a;
+    }
+
+    .continue-button button a {
+        text-decoration: none;
+        font-size: 0.93rem;
+        font-weight: 500;
+        color: white;
+    }
+
+@media screen and (max-width: 1330px) {
+    .form-image {
+        display: none;
+    }
+
+    .container {
+        width: 50%;
+    }
+
+    .form {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1064px) {
+    .container {
+        width: 90%;
+        height: auto;
+    }
+
+    .input-group {
+        flex-direction: column;
+        z-index: 5;
+        padding-right: 5rem;
+        max-height: 10rem;
+        overflow-y: scroll;
+        flex-wrap: nowrap;
+    }
+
+    .gender-inputs {
+        margin-top: 2rem;
+    }
+
+    .gender-group {
+        flex-direction: column;
+    }
+
+    .gender-title h6 {
+        margin: 0;
+    }
+
+    .gender-input {
+        margin-top: 0.5rem;
+    }
+}
+/* Estilos para o checkbox à esquerda da etiqueta */
+.checkbox-container {
+    align-items: center;
+    text-align: left;
+}
+
+/* Estilos para alinhar o link "Esqueceu sua senha?" à direita */
+.forgot-password {
+    text-align: right;
+}
+
+.image {
+    width: 300px; /* Largura da imagem */
+    height: 200px; /* Altura da imagem */
+}
+
+.texto {
+    color: white;
+    text-align: left;
+}
