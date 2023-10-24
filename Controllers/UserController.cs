@@ -66,7 +66,9 @@ namespace RenderGallery.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = db.Users.Where(x => x.Email == cliente.User.Email).FirstOrDefault();
+                string cpf = cliente.document.Replace(".", "");
+                cpf = cpf.Replace("-", "");
+                Cliente user = db.Clientes.Where(x => x.User.Email == cliente.User.Email || x.document == cpf).FirstOrDefault();
 
                 if (user != null)
                 {
@@ -76,8 +78,9 @@ namespace RenderGallery.Controllers
                 }
                 else
                 {
+
                     bool isValid = false;
-                    if(cliente.document.Length > 11)
+                    if(cpf.Length > 11)
                     {
                         isValid = Functions.ValidaCNPJ(cliente.document);
                     }
@@ -92,14 +95,15 @@ namespace RenderGallery.Controllers
                         cliente.User.Password = hash;
                         cliente.User.Usuario = Models.User.TipoUsuario.Cliente;
                         cliente.dataHora = DateTime.Now;
+                        cliente.document = cpf;
                         db.Clientes.Add(cliente);
                         db.SaveChanges();
-                        TempData["success"] = "Cliente Cadastrado com sucesso!";
+                        TempData["sucesso"] = "Cliente Cadastrado com sucesso!";
                       
                     }
                     else
                     {
-                        TempData["error"] = "Document invalid";
+                        TempData["erro"] = "Documento invalido";
                     }
 
                 }

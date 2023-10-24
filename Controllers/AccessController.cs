@@ -52,17 +52,22 @@ namespace RenderGallery.Controllers
                 var userData = new
                 {
                     access = 3,
+                    name = "",
                     role = "Visitante",
                     user_id = 0,
                     email = "",
+
+   
                 };
 
                 if (usuario.Usuario == Models.User.TipoUsuario.Administrador)
                 {
-                    userData = new
-                    {
+                userData = new
+                {
+               
                         access = (int)Models.User.TipoUsuario.Administrador,
-                        role = "Administrador",
+                    name = usuario.Name,
+                    role = "Administrador",
                         user_id = usuario.Id,
                         email = usuario.Email,
                     };
@@ -72,6 +77,7 @@ namespace RenderGallery.Controllers
                     userData = new
                     {
                         access = (int)Models.User.TipoUsuario.Cliente,
+                        name = usuario.Name,
                         role = "Cliente",
                         user_id = usuario.Id,
                         email = usuario.Email,
@@ -82,6 +88,7 @@ namespace RenderGallery.Controllers
                     userData = new
                     {
                         access = (int)Models.User.TipoUsuario.Artista,
+                        name = usuario.Name,
                         role = "Artista",
                         user_id = usuario.Id,
                         email = usuario.Email,
