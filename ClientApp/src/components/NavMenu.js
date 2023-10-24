@@ -49,9 +49,9 @@ export class NavMenu extends Component {
         {/*</Navbar>*/}
 
             <Navbar className="nav-main">
-                <div class="navbar">
+                <div className="navbar">
                
-                        <a href="#home" class="logo">
+                    <a href="#home" className="logo">
                         <img src={logo} alt="Logo da Minha Empresa" width="150"/>
                     </a>
 

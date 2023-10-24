@@ -2,19 +2,13 @@
 import axios from 'axios';
 import './loginn.css';
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [keepLoggedIn, setKeepLoggedIn] = useState(false);
     const navigate = useNavigate();
-    const notify = () => {
-        toast.success("Notificação de sucesso!", {
-            position: toast.POSITION.TOP_RIGHT,
-            autoClose: 3000, // Tempo em milissegundos que a notificação deve permanecer visível
-        });
-    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -31,14 +25,13 @@ function Login() {
 
 
             console.log(response);
-            notify();
             if (response.data.erro) {
                 alert(response.data.erro)
             } else {
-        
+
                 var nome = response.data.name;
                 var role = response.data.role;
-                alert("Nome: "+nome + " Role:" + role);
+                alert("Nome: " + nome + " Role: " + role);
             }
 
         } catch (error) {
@@ -60,7 +53,7 @@ function Login() {
             </div>
             <div className="right-login">
                 <div className="card-login">
-                    <h1>Login</h1>          
+                    <h1>Login</h1>
                     <form onSubmit={handleSubmit}>
                         <div className="input-box">
                             <input
@@ -81,17 +74,17 @@ function Login() {
                             />
                         </div>
                         <div className="checkbox-container">
-                                <input
-                                    type="checkbox"
-                                    checked={keepLoggedIn}
-                                    onChange={() => setKeepLoggedIn(!keepLoggedIn)}
-                                />
+                            <input
+                                type="checkbox"
+                                checked={keepLoggedIn}
+                                onChange={() => setKeepLoggedIn(!keepLoggedIn)}
+                            />
                             <label>
                                 Manter-me conectado
                             </label>
                         </div>
                         <div className="continue-button">
-                            <button onClick={notify}>Entrar</button>
+                            <button>Entrar</button>
                         </div>
                     </form>
                 </div>

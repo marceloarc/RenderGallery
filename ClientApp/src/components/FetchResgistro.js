@@ -30,7 +30,7 @@ class Registro extends Component {
             } else {
                // data = { "document": "43802329805", "user": { "name": "teste", "email": "teste@teste18.com", "password": "teste", "pic": "teste", "telefone": "43434" } };
                 data = { "document": document, "user": { email, password, name, "pic": "0", "telefone": telefone } };
-                console.log(data);
+
                 response = await axios.post(process.env.REACT_APP_API + '/user/RegisterCliente', data);
             }
 
@@ -53,23 +53,23 @@ class Registro extends Component {
         const { email, password, name, userType, telefone, document } = this.state;
 
         return (
-            <div class="container">
-                <div class="form-image">
-                    <div class="texto">
+            <div className="container">
+                <div className="form-image">
+                    <div className="texto">
                         <h1>Bem Vindo!</h1>
                         <br/>
                             <p>Realize o Cadastro para criar sua conta.</p>
                     </div>
                 </div>
-                <div class="form">
-                    <div class="form-header">
-                        <div class="title">
+                <div className="form">
+                    <div className="form-header">
+                        <div className="title">
                             <h1>Cadastre-se</h1>
                         </div>
                     </div>
 
-                    <div class="input-group">
-                        <div class="input-box">
+                    <div className="input-group">
+                        <div className="input-box">
                             <label for="name">Nome</label>
                             <input
                                 id="name"
@@ -83,7 +83,7 @@ class Registro extends Component {
                             </input>
                         </div>
 
-                        <div class="input-box">
+                        <div className="input-box">
                             <label for="email">Email</label>
                             <input
                                 id="email"
@@ -97,7 +97,7 @@ class Registro extends Component {
                             </input>
                         </div>
 
-                        <div class="input-box">
+                        <div className="input-box">
                             <label for="password">Senha</label>
                             <input
                                 id="password"
@@ -111,7 +111,7 @@ class Registro extends Component {
                             </input>
                         </div>
 
-                        <div class="input-box">
+                        <div className="input-box">
                             <label for="telefone">Telefone</label>
                             <input
                                 id="telefone"
@@ -125,7 +125,7 @@ class Registro extends Component {
                             </input>
                         </div>
 
-                        <div class="input-box">
+                        <div className="input-box">
                             <label for="userType">Tipo de Usuário</label>
                             <select
                                 id="userType"
@@ -140,7 +140,7 @@ class Registro extends Component {
                         </div>
 
                         {userType === 'cliente' && (
-                            <div class="input-box">
+                            <div className="input-box">
                                 <label for="document">Documento</label>
                                 <input
                                     id="document"
@@ -155,7 +155,7 @@ class Registro extends Component {
                             </div>
                             )}
                         </div>
-                        <div class="continue-button">
+                        <div className="continue-button">
                         <button onClick={this.handleRegister}>Registrar</button>
                         </div>
                 </div>
