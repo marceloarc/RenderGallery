@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Collapse, Navbar, NavbarBrand, NavbarToggler, NavItem, NavLink } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import './loginn.css';
-
+import logo from './img/render.png';
 export class NavMenu extends Component {
   static displayName = NavMenu.name;
 
@@ -50,14 +50,18 @@ export class NavMenu extends Component {
 
             <Navbar className="nav-main">
                 <div class="navbar">
-                    <div class = "logo-nav"></div>
-                    <NavItem className="opposite-buttons">
-                        <NavLink tag={Link} className="button-left" to="/fetch-login">Sign In</NavLink>
-                    </NavItem>
-                    <NavItem className="opposite-buttons">
-                        <NavLink tag={Link} className="button-right" to="/fetch-registro">Sign Up</NavLink>
-                    </NavItem>
+               
+                        <a href="#home" class="logo">
+                        <img src={logo} alt="Logo da Minha Empresa" width="150"/>
+                    </a>
+
                 </div>
+                <NavItem className="opposite-buttons">
+                    <NavLink tag={Link} className="button-left" to="/fetch-login">Login</NavLink>
+       
+      
+                    <NavLink tag={Link} className="button-right" to="/fetch-registro">Cadastro</NavLink>
+                </NavItem>
         </Navbar>
       </header>
     );

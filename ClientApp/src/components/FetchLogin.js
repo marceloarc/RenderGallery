@@ -2,13 +2,19 @@
 import axios from 'axios';
 import './loginn.css';
 import { useNavigate } from 'react-router-dom';
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [keepLoggedIn, setKeepLoggedIn] = useState(false);
     const navigate = useNavigate();
-
+    const notify = () => {
+        toast.success("Notificação de sucesso!", {
+            position: toast.POSITION.TOP_RIGHT,
+            autoClose: 3000, // Tempo em milissegundos que a notificação deve permanecer visível
+        });
+    };
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -22,29 +28,25 @@ function Login() {
             console.log(response.data);
             const access = response.data.access;
 
-            switch (access) {
-                case 0:
-                    // Redirecionar para a página de administrador
-                    navigate('/fetch-data');
-                    break;
-                case 1:
-                    // Redirecionar para a página de cliente
-                    navigate('/fetch-data');
-                    break;
-                case 2:
-                    // Redirecionar para a página de artista
-                    navigate('/fetch-data');
-                    break;
-                default:
-                    // Redirecionar para uma página de erro, pois o tipo de usuário é desconhecido
-                    break;
-            }
+
 
             console.log(response);
+            notify();
+            if (response.data.erro) {
+                alert(response.data.erro)
+            } else {
+        
+                var nome = response.data.name;
+                var role = response.data.role;
+                alert("Nome: "+nome + " Role:" + role);
+            }
+
         } catch (error) {
+            alert(error);
             console.error(error);
         }
     }
+
 
     return (
 
@@ -89,7 +91,7 @@ function Login() {
                             </label>
                         </div>
                         <div className="continue-button">
-                            <button><a href="#">Entrar</a></button>
+                            <button onClick={notify}>Entrar</button>
                         </div>
                     </form>
                 </div>

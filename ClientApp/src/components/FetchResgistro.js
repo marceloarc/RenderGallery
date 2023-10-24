@@ -35,13 +35,17 @@ class Registro extends Component {
             }
 
             const result = response.data;
-            if (result.success) {
+            console.error(result);
+            if (result.sucesso) {
                 this.setState({ message: result.sucesso });
-            } else if (result.error) {
+                alert(result.sucesso);
+            } else if (result.erro) {
                 this.setState({ message: result.erro });
+                alert(result.erro);
             }
         } catch (error) {
             console.error(error);
+            alert("Todos os campos são obrigatórios!");
         }
     };
 
@@ -152,7 +156,7 @@ class Registro extends Component {
                             )}
                         </div>
                         <div class="continue-button">
-                        <button onClick={this.handleRegister}><a href="#">Registrar</a></button>
+                        <button onClick={this.handleRegister}>Registrar</button>
                         </div>
                 </div>
             </div>
