@@ -68,7 +68,7 @@ class Registro extends Component {
                     <div className="texto">
                         <h1>Bem Vindo!</h1>
                         <br />
-                        <p>Realize o Cadastro para criar sua conta.</p>
+                        <p>Crie sua conta agora!</p>
                     </div>
                 </div>
                 <div className="form">

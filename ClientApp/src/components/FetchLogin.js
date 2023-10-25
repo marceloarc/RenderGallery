@@ -48,7 +48,7 @@ function Login() {
                 <div className="texto">
                     <h1>Bem Vindo!</h1>
                     <br />
-                    <p>Realize o Login para acessar sua conta.</p>
+                    <p>Acesse sua conta agora!</p>
                 </div>
             </div>
             <div className="right-login">
@@ -58,6 +58,7 @@ function Login() {
                         <div className="input-box">
                             <input
                                 type="text"
+                                className = "mt-3"
                                 name="email"
                                 placeholder="E-mail"
                                 value={email}
@@ -76,6 +77,7 @@ function Login() {
                         <div className="checkbox-container">
                             <input
                                 type="checkbox"
+                                className = "checkbox"
                                 checked={keepLoggedIn}
                                 onChange={() => setKeepLoggedIn(!keepLoggedIn)}
                             />
@@ -85,6 +87,9 @@ function Login() {
                         </div>
                         <div className="continue-button">
                             <button>Entrar</button>
+                        </div>
+                        <div className="link">
+                            <a href="#" className="mt-3">Esqueceu senha</a>
                         </div>
                     </form>
                 </div>
