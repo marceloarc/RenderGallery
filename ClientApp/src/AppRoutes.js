@@ -1,4 +1,5 @@
 import { Counter } from "./components/Counter";
+import CriaArt from "./components/FetchCriacaoArt";
 import { FetchData } from "./components/FetchData";
 import Login from "./components/FetchLogin";
 import Registro from "./components/FetchResgistro";
@@ -24,6 +25,10 @@ const AppRoutes = [
     {
         path: '/fetch-registro',
         element: <Registro />
+    },
+    {
+        path: '/fetch-cria-art',
+        element: < CriaArt />
     },
 ];
 

@@ -8,6 +8,7 @@ const context =  [
     "/Access",
     "/User",
     "/UserTest",
+    "/Art",
 ];
 
 module.exports = function(app) {

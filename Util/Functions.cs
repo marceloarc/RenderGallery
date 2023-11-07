@@ -6,37 +6,63 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using Microsoft.AspNetCore.Mvc;
+using RenderGallery.Models;
 
 namespace RenderGallery.Util
 {
     public class Functions
     {
-        private async Task<string> WriteFile(IFormFile file)
+        private string caminhoServidor;
+
+        public Functions(IWebHostEnvironment sistema)
         {
-            string filename = "";
-            try
-            {
-                var extension = "." + file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
-                filename = DateTime.Now.Ticks.ToString() + extension;
-
-                var filepath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files");
-
-                if (!Directory.Exists(filepath))
-                {
-                    Directory.CreateDirectory(filepath);
-                }
-
-                var exactpath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files", filename);
-                using (var stream = new FileStream(exactpath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-            }
-            catch (Exception ex)
-            {
-            }
-            return filename;
+            caminhoServidor = sistema.WebRootPath;
         }
+
+        private async Task<string> WriteFile(IFormFile img)
+        {
+            string caminhoParaSalvarImagem = caminhoServidor + "\\imagens\\";
+            string novoNomeParaImagem = Guid.NewGuid().ToString() + " " + img.FileName;
+            string caminhoCompleto = Path.Combine(caminhoParaSalvarImagem, novoNomeParaImagem);
+
+            if (!Directory.Exists(caminhoParaSalvarImagem))
+            {
+                Directory.CreateDirectory(caminhoParaSalvarImagem);
+            }
+
+            using (var stream = System.IO.File.Create(caminhoCompleto))
+            {
+                img.CopyToAsync(stream);
+            }
+
+            return caminhoCompleto;
+
+            //string filename = "";
+            //try
+            //{
+            //    var extension = "." + file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
+            //    filename = DateTime.Now.Ticks.ToString() + extension;
+
+            //    var filepath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files");
+
+            //    if (!Directory.Exists(filepath))
+            //    {
+            //        Directory.CreateDirectory(filepath);
+            //    }
+
+            //    var exactpath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files", filename);
+            //    using (var stream = new FileStream(exactpath, FileMode.Create))
+            //    {
+            //        await file.CopyToAsync(stream);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //}
+            //return filename;
+        }
+
+
 
         public static bool ValidaCPF(string vrCPF)
         {
@@ -89,117 +115,64 @@ namespace RenderGallery.Util
         }
 
         public static bool ValidaCNPJ(string vrCNPJ)
-
         {
-
             string CNPJ = vrCNPJ.Replace(".", "");
-
             CNPJ = CNPJ.Replace("/", "");
-
             CNPJ = CNPJ.Replace("-", "");
 
-
-
             int[] digitos, soma, resultado;
-
             int nrDig;
-
             string ftmt;
-
             bool[] CNPJOk;
 
-
-
             ftmt = "6543298765432";
-
             digitos = new int[14];
 
             soma = new int[2];
-
             soma[0] = 0;
-
             soma[1] = 0;
 
             resultado = new int[2];
-
             resultado[0] = 0;
-
             resultado[1] = 0;
 
             CNPJOk = new bool[2];
-
             CNPJOk[0] = false;
-
             CNPJOk[1] = false;
 
-
-
             try
-
             {
-
                 for (nrDig = 0; nrDig < 14; nrDig++)
-
                 {
-
-                    digitos[nrDig] = int.Parse(
-
-                        CNPJ.Substring(nrDig, 1));
+                    digitos[nrDig] = int.Parse(CNPJ.Substring(nrDig, 1));
 
                     if (nrDig <= 11)
-
                         soma[0] += (digitos[nrDig] *
-
                           int.Parse(ftmt.Substring(
-
                           nrDig + 1, 1)));
 
                     if (nrDig <= 12)
-
                         soma[1] += (digitos[nrDig] *
-
                           int.Parse(ftmt.Substring(
-
                           nrDig, 1)));
-
                 }
-
-
 
                 for (nrDig = 0; nrDig < 2; nrDig++)
-
                 {
-
                     resultado[nrDig] = (soma[nrDig] % 11);
 
-                    if ((resultado[nrDig] == 0) || (
-
-                         resultado[nrDig] == 1))
-
+                    if ((resultado[nrDig] == 0) || (resultado[nrDig] == 1))
                         CNPJOk[nrDig] = (
-
                         digitos[12 + nrDig] == 0);
-
                     else
-
                         CNPJOk[nrDig] = (
-
-                        digitos[12 + nrDig] == (
-
-                        11 - resultado[nrDig]));
-
+                        digitos[12 + nrDig] == (11 - resultado[nrDig]));
                 }
-
                 return (CNPJOk[0] && CNPJOk[1]);
-
             }
-
             catch
-
             {
-
                 return false;
-
             }
 
         }

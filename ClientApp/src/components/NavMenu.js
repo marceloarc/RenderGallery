@@ -57,9 +57,9 @@ export class NavMenu extends Component {
 
                 </div>
                 <NavItem className="opposite-buttons">
+                    <NavLink tag={Link} className="button-left" to="/fetch-cria-art">Cria Art</NavLink>
+
                     <NavLink tag={Link} className="button-left" to="/fetch-login">Login</NavLink>
-       
-      
                     <NavLink tag={Link} className="button-right" to="/fetch-registro">Cadastro</NavLink>
                 </NavItem>
         </Navbar>
