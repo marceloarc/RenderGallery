@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RenderGallery.Models
 {
@@ -6,17 +7,21 @@ namespace RenderGallery.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
+        
         [StringLength(250)]
-        public string Arte { get; set; }
-        [Required]
+        public string? Arte { get; set; }
+
+        [NotMapped]
+        public IFormFile? file { get; set; }
+
+        
         public float Valor { get; set; }
-        [Required]
+        
         public int Quantidade { get; set; }
-        [Required]
+      
         [StringLength(250)]
-        public string Hash { get; set;}
-        [Required]
+        public string? Hash { get; set;}
+     
         public DateTime dataHora { get; set; }
         public virtual List<Tags>? Tags { get; set; }
 
