@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using RenderGallery.Models;
+using RenderGallery.Util;
 
 namespace RenderGallery.Controllers
 {
@@ -17,9 +18,9 @@ namespace RenderGallery.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Upload(IFormFile arte)
+        public async Task<IActionResult> Upload(Art arte)
         {
-            string caminhoArquivo = WriteFile(arte);
+            string caminhoArquivo = Functions.WriteFile(arte.file);
 
             if (string.IsNullOrEmpty(caminhoArquivo))
             {

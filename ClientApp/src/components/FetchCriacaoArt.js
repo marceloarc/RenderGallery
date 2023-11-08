@@ -5,14 +5,10 @@ import InputMask from 'react-input-mask';
 
 class CriaArt extends Component {
     state = {
-        email: '',
-        password: '',
-        name: '',
-        userType: 'artista', // Valor padrão para artista
-        message: '',
-        document: '',
-        telefone: '',
-        mask: '', // Defina mask no estado inicial
+        valor: '',
+        quantidade: '',
+        arte: '',
+        file: '',
     };
 
     handleChange = (e) => {
@@ -30,12 +26,12 @@ class CriaArt extends Component {
     };
 
     handlePublicar = async () => {
-        const { valor, quantidade, arte } = this.state;
+        const { valor, quantidade, file } = this.state;
         var data = {};
         try {
             let response;
 
-            data = { "art": { valor, quantidade, arte } };
+            data = { "art": { valor, quantidade, file } };
             response = await axios.post(process.env.REACT_APP_API + '/art/Upload', data);
 
             const result = response.data;
@@ -54,7 +50,7 @@ class CriaArt extends Component {
     };
 
     render() {
-        const { valor, quantidade, arte } = this.state;
+        const { valor, quantidade, file } = this.state;
 
         return (
             <div className="container">
@@ -102,10 +98,10 @@ class CriaArt extends Component {
                         <div className="input-box">
                             <label for="arte">Arte</label>
                             <input
-                                id="arte"
+                                id="file"
                                 type="file"
-                                name="arte"
-                                value={arte}
+                                name="file"
+                                value={file}
                                 onChange={this.handleChange}
                                 required
                             />

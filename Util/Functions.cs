@@ -12,25 +12,24 @@ namespace RenderGallery.Util
 {
     public class Functions
     {
-        private string caminhoServidor;
+        private static string caminhoServidor;
 
         public Functions(IWebHostEnvironment sistema)
         {
             caminhoServidor = sistema.WebRootPath;
         }
 
-        private async Task<string> WriteFile(IFormFile img)
+        public static string WriteFile(IFormFile img)
         {
             string caminhoParaSalvarImagem = caminhoServidor + "\\imagens\\";
-            string novoNomeParaImagem = Guid.NewGuid().ToString() + " " + img.FileName;
-            string caminhoCompleto = Path.Combine(caminhoParaSalvarImagem, novoNomeParaImagem);
+            string caminhoCompleto = Path.Combine(Directory.GetCurrentDirectory(), "imagens");
 
-            if (!Directory.Exists(caminhoParaSalvarImagem))
+            if (!Directory.Exists(caminhoCompleto))
             {
-                Directory.CreateDirectory(caminhoParaSalvarImagem);
+                Directory.CreateDirectory(caminhoCompleto);
             }
 
-            using (var stream = System.IO.File.Create(caminhoCompleto))
+            using (Stream stream = new FileStream(caminhoCompleto, FileMode.Create))
             {
                 img.CopyToAsync(stream);
             }
@@ -95,7 +94,8 @@ namespace RenderGallery.Util
             {
                 if (numeros[9] != 0)
                     return false;
-            }else if (numeros[9] != 11 - resultado)
+            }
+            else if (numeros[9] != 11 - resultado)
                 return false;
 
             soma = 0;
@@ -107,7 +107,8 @@ namespace RenderGallery.Util
             {
                 if (numeros[10] != 0)
                     return false;
-            }else
+            }
+            else
                 if (numeros[10] != 11 - resultado)
                 return false;
 
