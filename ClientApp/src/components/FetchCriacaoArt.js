@@ -1,19 +1,26 @@
 ﻿import React, { Component } from 'react';
+
 import axios from 'axios';
 import './loginn.css';
 import InputMask from 'react-input-mask';
 
 class CriaArt extends Component {
     state = {
+        arte: 'teste',
         valor: '',
         quantidade: '',
-        arte: '',
+       
         file: '',
     };
 
     handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
     };
+
+    handleFile = (e) => {
+        this.setState({ [e.target.name]: e.target.files[0] })
+    }
+
 
     handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -26,12 +33,16 @@ class CriaArt extends Component {
     };
 
     handlePublicar = async () => {
-        const { valor, quantidade, file } = this.state;
-        var data = {};
+        const {arte, valor, quantidade, file } = this.state;
+  
         try {
             let response;
+            let response2
+            const data = new FormData();
+            data.append("File", file);
 
-            data = { "art": { valor, quantidade, file } };
+            console.log(this.state);
+
             response = await axios.post(process.env.REACT_APP_API + '/art/Upload', data);
 
             const result = response.data;
@@ -39,13 +50,27 @@ class CriaArt extends Component {
             if (result.sucesso) {
                 this.setState({ message: result.sucesso });
                 alert(result.sucesso);
+                try {
+                    const data2 = new FormData();
+                    data2.append("Quantidade", quantidade);
+                    data2.append("Valor", valor);
+                    data2.append("Arte", arte);
+                    data2.append("Path", result.path);
+                    response2 = await axios.post(process.env.REACT_APP_API + '/art/SaveArt', data2);
+                    const result2 = response2.data;
+                    if (result2.sucesso) {
+                        alert(result2.sucesso);
+                    }
+                } catch(error) {
+                    console.error(error);
+                }
             } else if (result.erro) {
                 this.setState({ message: result.erro });
                 alert(result.erro);
             }
         } catch (error) {
             console.error(error);
-            alert("Todos os campos são obrigatórios!");
+ 
         }
     };
 
@@ -101,8 +126,8 @@ class CriaArt extends Component {
                                 id="file"
                                 type="file"
                                 name="file"
-                                value={file}
-                                onChange={this.handleChange}
+     
+                                onChange={this.handleFile}
                                 required
                             />
                         </div> 
