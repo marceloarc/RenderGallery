@@ -10,11 +10,9 @@ namespace RenderGallery.Models
         
         [StringLength(250)]
         public string? Arte { get; set; }
-
-        [NotMapped]
-        public IFormFile? file { get; set; }
-
         
+        public string? Path { get; set; }
+
         public float Valor { get; set; }
         
         public int Quantidade { get; set; }

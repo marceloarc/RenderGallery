@@ -18,33 +18,34 @@ namespace RenderGallery.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> Upload(Art arte)
+        public async Task<IActionResult> Upload([FromForm]Files arte)
         {
-            string caminhoArquivo = Functions.WriteFile(arte.file);
+
+         string caminhoArquivo = Functions.WriteFile(arte.File);
 
             if (string.IsNullOrEmpty(caminhoArquivo))
             {
                 return BadRequest("Erro ao fazer o upload da imagem");
             }
 
-            var art = new Art
-            {
-                Arte = caminhoArquivo,
-                Valor = float.Parse(Request.Form["valor"]),
-                Quantidade = int.Parse(Request.Form["quantidade"]),
-                dataHora = DateTime.Now
-            };
 
-            db.Arts.Add(art);
+            TempData["sucesso"] = "Upload realizado com sucesso!";
+            TempData["path"] = caminhoArquivo;
+            return Ok(TempData);
+        }
+
+        [HttpPost("[action]")]
+        public async Task<IActionResult> SaveArt([FromForm] Art arte)
+        {
+
+            
+
+            db.Arts.Add(arte);
             db.SaveChanges();
 
             TempData["sucesso"] = "Arte Cadastrada com sucesso!";
             return Ok(TempData);
         }
 
-        private string WriteFile(IFormFile arte)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
