@@ -21,20 +21,18 @@ namespace RenderGallery.Util
 
         public static string WriteFile(IFormFile img)
         {
-            string caminhoParaSalvarImagem = caminhoServidor + "\\imagens\\";
             string caminhoCompleto = Path.Combine(Directory.GetCurrentDirectory(), "imagens");
 
             if (!Directory.Exists(caminhoCompleto))
             {
                 Directory.CreateDirectory(caminhoCompleto);
             }
-
-            using (Stream stream = new FileStream(caminhoCompleto, FileMode.Create))
+            string path = caminhoCompleto + "\\" + GetTimestamp(DateTime.Now)+System.IO.Path.GetExtension(img.FileName);
+            using (Stream stream = new FileStream(path, FileMode.Create))
             {
                 img.CopyToAsync(stream);
             }
-
-            return caminhoCompleto;
+            return path;
 
             //string filename = "";
             //try
@@ -61,7 +59,10 @@ namespace RenderGallery.Util
             //return filename;
         }
 
-
+        public static String GetTimestamp(DateTime value)
+        {
+            return value.ToString("yyyyMMddHHmmssffff");
+        }
 
         public static bool ValidaCPF(string vrCPF)
         {
