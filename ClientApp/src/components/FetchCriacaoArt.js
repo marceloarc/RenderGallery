@@ -51,11 +51,13 @@ class CriaArt extends Component {
                 this.setState({ message: result.sucesso });
                 alert(result.sucesso);
                 try {
-                    const data2 = new FormData();
-                    data2.append("Quantidade", quantidade);
-                    data2.append("Valor", valor);
-                    data2.append("Arte", arte);
-                    data2.append("Path", result.path);
+                    const data2 = {
+                        quantidade: quantidade,
+                        valor: valor,
+                        Arte: arte,
+                        Path: result.path
+                    }
+                    console.log(data2);
                     response2 = await axios.post(process.env.REACT_APP_API + '/art/SaveArt', data2);
                     const result2 = response2.data;
                     if (result2.sucesso) {
