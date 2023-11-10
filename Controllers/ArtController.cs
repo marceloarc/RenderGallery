@@ -35,10 +35,10 @@ namespace RenderGallery.Controllers
         }
 
         [HttpPost("[action]")]
-        public async Task<IActionResult> SaveArt([FromForm] Art arte)
+        public async Task<IActionResult> SaveArt(Art arte)
         {
 
-            
+            arte.dataHora = DateTime.Now;
 
             db.Arts.Add(arte);
             db.SaveChanges();
