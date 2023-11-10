@@ -30,33 +30,11 @@ namespace RenderGallery.Util
             string path = caminhoCompleto + "\\" + GetTimestamp(DateTime.Now)+System.IO.Path.GetExtension(img.FileName);
             using (Stream stream = new FileStream(path, FileMode.Create))
             {
-                img.CopyToAsync(stream);
+                img.CopyTo(stream);
             }
             return path;
 
-            //string filename = "";
-            //try
-            //{
-            //    var extension = "." + file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
-            //    filename = DateTime.Now.Ticks.ToString() + extension;
 
-            //    var filepath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files");
-
-            //    if (!Directory.Exists(filepath))
-            //    {
-            //        Directory.CreateDirectory(filepath);
-            //    }
-
-            //    var exactpath = Path.Combine(Directory.GetCurrentDirectory(), "Upload\\Files", filename);
-            //    using (var stream = new FileStream(exactpath, FileMode.Create))
-            //    {
-            //        await file.CopyToAsync(stream);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //}
-            //return filename;
         }
 
         public static String GetTimestamp(DateTime value)
